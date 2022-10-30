@@ -1,18 +1,29 @@
 import { CONFIG } from "config/config";
 import { ethers, BigNumberish } from "ethers";
 import { VoidSigner } from "ethers/lib/ethers";
-import { LoanTermsPayload, StructuredLoanTerms } from "./index";
 
 export type LoanTermsPayload = {
-  payableCurrency: string;
   durationSecs: BigNumberish;
-  principal: ethers.BigNumber;
-  interestRate: ethers.BigNumber;
   deadline: BigNumberish;
-  nonce: BigNumberish;
-  collateralId: BigNumberish;
+  numInstallments: BigNumberish /* ONLY USED FOR INSTALLMENT LOANS. USE 0 FOR REGULAR LOANS*/;
+  interestRate: ethers.BigNumber /* SEE HELPERS FILE ON HOW TO GENERATE THIS */;
+  principal: ethers.BigNumber /* IN TERMS OF WEI */;
+  /**
+   * @dev This is the address of the collection used as collateral
+   * For Direct ERC721 Asset loans it will be the address of the collection
+   * For VAULT Loans it will be the VAULT FACTORY address. See config file
+   */
   collateralAddress: string;
-  numInstallments: BigNumberish;
+  /**
+   * @dev This is the address of the tokenId used as collateral
+   * For Direct ERC721 Asset loans it will be the tokenId of the asset
+   * For VAULT Loans it will be the tokenId (decimal representation of the vault address) of the vault.
+   */
+  collateralId: BigNumberish;
+  payableCurrency: string;
+  /* this is the loanTerms nonce you get in response to GET /account/:walletAddress*/
+  nonce: BigNumberish;
+  /* states if you are signing as the borrower or lender BORROWER: 0 LENDER: 1*/
   side: 0 | 1;
 };
 
@@ -40,13 +51,13 @@ const typedLoanTermsData: TypeData = {
 };
 
 const createLoanTermsPayload = ({
-  payableCurrency,
   durationSecs,
-  principal,
+  deadline,
   interestRate,
+  principal,
   collateralAddress,
   collateralId,
-  deadline,
+  payableCurrency,
   nonce,
   side,
 }: LoanTermsPayload): LoanTermsPayload => {
@@ -55,12 +66,13 @@ const createLoanTermsPayload = ({
     deadline,
     numInstallments: 0,
     interestRate: ethers.utils.parseUnits(`${interestRate}`, 0),
-    principal: ethers.utils.parseUnits(`${principal}`, 0),
+    principal: ethers.utils.parseUnits(`${principal}`, 0) /* IN TERMS OF WEI */,
     collateralAddress: collateralAddress,
     collateralId: collateralId,
     payableCurrency: payableCurrency,
-    nonce: nonce,
-    side: side,
+    nonce:
+      nonce /* this is the loanTerms nonce you get in response to GET /account/:walletAddress*/,
+    side: side /* states if you are signing as the borrower or lender BORROWER: 0 LENDER: 1*/,
   };
 };
 
