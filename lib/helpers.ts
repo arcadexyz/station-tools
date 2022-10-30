@@ -10,7 +10,7 @@ type Props = {
   durationInDays: number;
 };
 
-/* Important Calculation and formatting functions assembled here to make it easy to write tests */
+/* Important Calculation and formatting functions  */
 
 export const toInterestAmount = (principal: string, interestRate: string) => {
   const repayment = calculateRepayment({ principal, interestRate });
@@ -39,8 +39,12 @@ export const calculateDays = (seconds?: string) => {
   return days;
 };
 
-// write tests for this function, its very important
 // protocol consider 0.01% as 1 * 10**18
+
+// Input conversion: 0.01% = (1 * 10**18) ,  10.00% = (1000 * 10**18)
+// This represents the rate over the lifetime of the loan, not APR.
+// 0.01% is the minimum interest rate allowed by the protocol.
+
 // 1% = 100 * 10 ** 18 or 1e20
 // 10% = 1000 * 10 ** 18 or 1e21
 // 20% = 2000 * 10 ** 18 or 2e21
