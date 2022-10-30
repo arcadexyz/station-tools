@@ -1,0 +1,186 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "contract ILoanCore",
+        "name": "_loanCore",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "interestRate", "type": "uint256" }
+    ],
+    "name": "FIAC_InterestRate",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "target", "type": "uint256" }
+    ],
+    "name": "RC_CannotDereference",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "numInstallments",
+        "type": "uint256"
+      }
+    ],
+    "name": "RC_HasInstallments",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "enum LoanLibrary.LoanState",
+        "name": "state",
+        "type": "uint8"
+      }
+    ],
+    "name": "RC_InvalidState",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "numInstallments",
+        "type": "uint256"
+      }
+    ],
+    "name": "RC_NoInstallments",
+    "type": "error"
+  },
+  { "inputs": [], "name": "RC_NoPaymentDue", "type": "error" },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "caller", "type": "address" }
+    ],
+    "name": "RC_OnlyLender",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "amount", "type": "uint256" },
+      { "internalType": "uint256", "name": "minAmount", "type": "uint256" }
+    ],
+    "name": "RC_RepayPartLTMin",
+    "type": "error"
+  },
+  { "inputs": [], "name": "RC_RepayPartZero", "type": "error" },
+  {
+    "inputs": [],
+    "name": "BASIS_POINTS_DENOMINATOR",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "INSTALLMENT_PERIOD_MULTIPLIER",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "INTEREST_RATE_DENOMINATOR",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "LATE_FEE",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "loanId", "type": "uint256" }
+    ],
+    "name": "amountToCloseLoan",
+    "outputs": [
+      { "internalType": "uint256", "name": "", "type": "uint256" },
+      { "internalType": "uint256", "name": "", "type": "uint256" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "loanId", "type": "uint256" }
+    ],
+    "name": "claim",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "loanId", "type": "uint256" }
+    ],
+    "name": "closeLoan",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "principal", "type": "uint256" },
+      { "internalType": "uint256", "name": "interestRate", "type": "uint256" }
+    ],
+    "name": "getFullInterestAmount",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "loanId", "type": "uint256" }
+    ],
+    "name": "getInstallmentMinPayment",
+    "outputs": [
+      { "internalType": "uint256", "name": "", "type": "uint256" },
+      { "internalType": "uint256", "name": "", "type": "uint256" },
+      { "internalType": "uint256", "name": "", "type": "uint256" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "loanId", "type": "uint256" }
+    ],
+    "name": "repay",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "loanId", "type": "uint256" },
+      { "internalType": "uint256", "name": "amount", "type": "uint256" }
+    ],
+    "name": "repayPart",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "loanId", "type": "uint256" }
+    ],
+    "name": "repayPartMinimum",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]

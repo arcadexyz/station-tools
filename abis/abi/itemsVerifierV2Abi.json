@@ -1,0 +1,45 @@
+[
+  {
+    "inputs": [
+      { "internalType": "address", "name": "asset", "type": "address" },
+      { "internalType": "uint256", "name": "cType", "type": "uint256" }
+    ],
+    "name": "IV_InvalidCollateralType",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "asset", "type": "address" },
+      { "internalType": "int256", "name": "tokenId", "type": "int256" }
+    ],
+    "name": "IV_InvalidTokenId1155",
+    "type": "error"
+  },
+  { "inputs": [], "name": "IV_ItemMissingAddress", "type": "error" },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "asset", "type": "address" },
+      { "internalType": "uint256", "name": "amount", "type": "uint256" }
+    ],
+    "name": "IV_NonPositiveAmount1155",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "asset", "type": "address" },
+      { "internalType": "uint256", "name": "amount", "type": "uint256" }
+    ],
+    "name": "IV_NonPositiveAmount20",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      { "internalType": "bytes", "name": "predicates", "type": "bytes" },
+      { "internalType": "address", "name": "vault", "type": "address" }
+    ],
+    "name": "verifyPredicates",
+    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]
