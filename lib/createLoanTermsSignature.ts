@@ -78,7 +78,7 @@ const createLoanTermsPayload = ({
 
 // Structures into the EIP712 domain spec, using loanTermsPayload as the message.
 const buildEIP712TypedData = async (
-  loanTermsPayload: StructuredLoanTerms,
+  loanTermsPayload: LoanTermsPayload,
   verifyingContract: string
 ) => {
   return Object.assign({}, typedLoanTermsData, {
